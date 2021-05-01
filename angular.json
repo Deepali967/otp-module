@@ -3,5 +3,44 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-  }
+    "ng-otp-module": {
+      "projectType": "library",
+      "root": "projects/ng-otp-module",
+      "sourceRoot": "projects/ng-otp-module/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/ng-otp-module/tsconfig.lib.json",
+            "project": "projects/ng-otp-module/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ng-otp-module/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ng-otp-module/src/test.ts",
+            "tsConfig": "projects/ng-otp-module/tsconfig.spec.json",
+            "karmaConfig": "projects/ng-otp-module/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ng-otp-module/tsconfig.lib.json",
+              "projects/ng-otp-module/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "ng-otp-module"
 }
